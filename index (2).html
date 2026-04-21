@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kirsten Thayer — Product Leadership & UX Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a2e4a;
+    --navy-mid: #243a5e;
+    --navy-light: #2d4a73;
+    --sage: #4a7c59;
+    --sage-light: #6b9b7a;
+    --sage-pale: #e8f0ea;
+    --sage-faint: #f2f6f3;
+    --warm-white: #fafaf8;
+    --cream: #f5f3ef;
+    --ink: #1c2333;
+    --muted: #5a6478;
+    --light-muted: #8a94a6;
+    --border: rgba(26,46,74,0.1);
+    --border-mid: rgba(26,46,74,0.18);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Outfit', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--warm-white);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--navy);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+  .nav-cta {
+    background: var(--navy) !important;
+    color: white !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+  }
+  .nav-cta:hover { background: var(--navy-mid) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8rem 4rem 5rem;
+    gap: 5rem;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 2.5rem;
+    height: 1px;
+    background: var(--sage-light);
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 5vw, 4.8rem);
+    line-height: 1.08;
+    color: var(--navy);
+    margin-bottom: 1.75rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--sage);
+  }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 500px;
+    margin-bottom: 2.75rem;
+    font-weight: 300;
+    line-height: 1.85;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-block;
+    padding: 0.9rem 2.1rem;
+    border-radius: 2px;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.22s;
+  }
+  .btn-primary { background: var(--navy); color: white; }
+  .btn-primary:hover { background: var(--navy-mid); }
+  .btn-outline { background: transparent; color: var(--navy); border: 1px solid var(--navy); }
+  .btn-outline:hover { background: var(--navy); color: white; }
+  .btn-sage { background: var(--sage); color: white; }
+  .btn-sage:hover { background: var(--sage-light); }
+
+  /* Hero visual */
+  .hero-visual { position: relative; }
+  .hero-card {
+    background: linear-gradient(150deg, var(--navy) 0%, #1e3a5f 60%, #253f63 100%);
+    border-radius: 6px;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-card::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(74,124,89,0.15);
+    pointer-events: none;
+  }
+  .hero-card::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+  .hero-card-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(184,210,190,0.7);
+    margin-bottom: 2rem;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem;
+    margin-bottom: 2.5rem;
+  }
+  .hero-stat-num {
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    color: white;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .hero-stat-label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+  }
+  .hero-card-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.12);
+    margin-bottom: 2rem;
+  }
+  .hero-card-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+  .hero-card-attr {
+    font-size: 0.72rem;
+    color: rgba(184,210,190,0.6);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section { padding: 6rem 0; }
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 4rem;
+  }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 1.75rem;
+    height: 1px;
+    background: var(--sage-light);
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    color: var(--navy);
+    margin-bottom: 1rem;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .section-intro {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 600px;
+    font-weight: 300;
+    line-height: 1.9;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--cream); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 6rem;
+    align-items: start;
+    margin-top: 4rem;
+  }
+  .about-text p {
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.9;
+    margin-bottom: 1.6rem;
+    font-size: 1.05rem;
+  }
+  .about-text p:first-child {
+    font-size: 1.15rem;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .about-sidebar { display: flex; flex-direction: column; gap: 0; }
+  .sidebar-block {
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border-mid);
+  }
+  .sidebar-block:last-child { border-bottom: 1px solid var(--border-mid); }
+  .sidebar-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.6rem;
+  }
+  .sidebar-val {
+    font-size: 0.92rem;
+    color: var(--ink);
+    font-weight: 400;
+    line-height: 1.65;
+  }
+
+  /* ── WORK ── */
+  #work { background: var(--warm-white); }
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+  .case-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .case-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(26,46,74,0.1);
+  }
+  .card-top {
+    height: 5px;
+  }
+  .ct-navy { background: var(--navy); }
+  .ct-sage { background: var(--sage); }
+  .ct-slate { background: #4a5568; }
+  .card-body { padding: 2rem; }
+  .card-type {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.75rem;
+  }
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--navy);
+    margin-bottom: 0.85rem;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .card-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .card-metric {
+    background: var(--sage-faint);
+    border-left: 3px solid var(--sage-light);
+    padding: 0.85rem 1rem;
+    border-radius: 0 2px 2px 0;
+    margin-bottom: 1.25rem;
+    font-size: 0.88rem;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .card-metric strong {
+    color: var(--sage);
+    font-weight: 600;
+  }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag {
+    display: inline-block;
+    padding: 0.22rem 0.65rem;
+    background: var(--sage-faint);
+    color: var(--sage);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+  .work-note {
+    margin-top: 2.5rem;
+    font-size: 0.88rem;
+    color: var(--light-muted);
+    font-style: italic;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--cream); }
+  .timeline { margin-top: 4rem; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 3rem;
+    padding: 2.75rem 0;
+    border-top: 1px solid var(--border);
+    align-items: start;
+  }
+  .timeline-item:last-child { border-bottom: 1px solid var(--border); }
+  .timeline-left {}
+  .timeline-date {
+    font-size: 0.8rem;
+    color: var(--light-muted);
+    font-weight: 400;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.04em;
+  }
+  .timeline-company {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+  .timeline-role {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--navy);
+    margin-bottom: 0.85rem;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .timeline-desc {
+    font-size: 0.92rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.85;
+    margin-bottom: 0.85rem;
+  }
+  .timeline-bullets {
+    margin-top: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .timeline-bullets li {
+    font-size: 0.88rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.75;
+    padding-left: 1.1rem;
+    position: relative;
+    list-style: none;
+  }
+  .timeline-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--sage-light);
+  }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: var(--warm-white); }
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+  .testimonial-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2.5rem;
+    position: relative;
+  }
+  .testimonial-card::before {
+    content: '\201C';
+    font-family: var(--font-display);
+    font-size: 5rem;
+    color: var(--sage-pale);
+    position: absolute;
+    top: 1rem;
+    left: 1.75rem;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .testimonial-text {
+    font-size: 0.95rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.9;
+    margin-bottom: 1.75rem;
+    position: relative;
+    z-index: 1;
+    padding-top: 1rem;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1.25rem;
+  }
+  .testimonial-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy), var(--sage));
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: white;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .testimonial-name {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .testimonial-title {
+    font-size: 0.78rem;
+    color: var(--light-muted);
+    font-weight: 300;
+    line-height: 1.4;
+  }
+
+  /* ── SCHEDULE ── */
+  #schedule { background: var(--navy); }
+  #schedule .section-label { color: rgba(184,210,190,0.7); }
+  #schedule .section-label::before { background: rgba(107,155,122,0.6); }
+  #schedule .section-title { color: white; }
+  #schedule .section-intro { color: rgba(255,255,255,0.55); max-width: 500px; }
+  .schedule-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 3.5rem;
+  }
+  .schedule-info {}
+  .schedule-types {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 2rem;
+  }
+  .schedule-type {
+    padding: 1.25rem 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .schedule-type:last-child { border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .schedule-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--sage-light);
+    flex-shrink: 0;
+    margin-top: 0.5rem;
+  }
+  .schedule-type-name {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.02em;
+  }
+  .schedule-type-desc {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .calendly-wrapper {
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--cream); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 6rem;
+    align-items: start;
+    margin-top: 4rem;
+  }
+  .contact-info p {
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.9;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--sage); }
+  .contact-link-icon {
+    width: 38px; height: 38px;
+    background: var(--sage-pale);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    color: var(--sage);
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+  .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-group label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--ink);
+    background: white;
+    border: 1px solid var(--border-mid);
+    border-radius: 2px;
+    transition: border-color 0.2s;
+    outline: none;
+    resize: vertical;
+    appearance: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--sage-light);
+    box-shadow: 0 0 0 3px rgba(107,155,122,0.12);
+  }
+  .form-group textarea { min-height: 140px; }
+  .form-status {
+    padding: 0.9rem 1.25rem;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    display: none;
+  }
+  .form-status.success {
+    display: block;
+    background: var(--sage-faint);
+    color: var(--sage);
+    border: 1px solid rgba(107,155,122,0.3);
+  }
+  .form-status.error {
+    display: block;
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 2.5rem 3rem;
+    font-size: 0.82rem;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+  }
+  footer a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: rgba(255,255,255,0.8); }
+
+  /* ── FADE IN ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 3rem; }
+    .section-inner { padding: 0 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .work-grid { grid-template-columns: 1fr; }
+    .testimonial-grid { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .schedule-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Kirsten Thayer</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#schedule" class="nav-cta">Book a Call</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Product Leadership &amp; UX Strategy</div>
+    <h1>Built for the people who <em>make</em> entertainment happen.</h1>
+    <p class="hero-sub">I'm a product leader and consultant with 20+ years in the entertainment industry — helping teams build software that actually works for the humans who depend on it every day.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn btn-primary">See My Work</a>
+      <a href="#schedule" class="btn btn-outline">Book a Conversation</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="hero-card-label">At a Glance</div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">30+</div>
+          <div class="hero-stat-label">Years bringing entertainment workflows into the digital world</div>
+        </div>
+        <div>
+          <div class="hero-stat-num" style="font-size:1.4rem; line-height:1.2;">Script File<br>Standard</div>
+          <div class="hero-stat-label">Shipped Final Draft's XML-based file format — enabling structured data exchange between industry tools, adopted by industry as the new standard</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">90%</div>
+          <div class="hero-stat-label">Of payroll edits automated at a major entertainment payroll company, reducing errors 10%+ YoY</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">45pt</div>
+          <div class="hero-stat-label">NPS improvement on a core payroll product within 12 months</div>
+        </div>
+      </div>
+      <div class="hero-card-divider"></div>
+      <div class="hero-card-quote">"She meets you where you are while pushing you to grow."</div>
+      <div class="hero-card-attr">— Alexis Voltaire, Associate Product Manager</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="section-label">About Me</div>
+    <h2 class="section-title">I started in television.<br>I never really left.</h2>
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <p>I came to product through an unusual door. In my twenties I was working in television — and sold a script for the show I was on. But I kept noticing that my instincts ran more logical than creative, and that the industry rewarded relationships over merit in ways that didn't sit right with me. So when I had the chance to move to the business side, I took it. I worked at a fledgling TV network, then moved into feature film development at several production companies, including one led by one of the most influential female studio heads of the past three decades.</p>
+        <p>The pivot to technology came through the tools I was already using on the job. In the late 1990s I joined Brookfield Communications — a software company serving more than 3,000 users across every major studio, network, talent agency, and production company — and found myself at the intersection of entertainment and the early web. When Brookfield was acquired by Creative Planet, one of the first major VC-backed entertainment tech startups, I became responsible for migrating two widely used desktop products to the web. Those were the only products that shipped before the startup went under and its assets were sold off. I'm proud of that — it's a good early lesson in what it means to actually deliver.</p>
+        <p>What's followed is 20+ years of building software at that same intersection. At Final Draft, I shipped the XML-based file format that made the industry's most-used screenwriting tool machine-readable — enabling structured data exchange with downstream tools across production, budgeting, and scheduling. It was an early bet on interoperability that the entertainment industry has spent the last two decades catching up to, in efforts led by organizations like MovieLabs. From there, I moved into digitizing the manual processes that still governed how productions hired crews, ran payroll, and managed accounting — turning phone calls and paper into automated workflows at scale. Most recently at Cast &amp; Crew, I led a multi-year platform consolidation through two Hollywood strikes, multiple reorgs, and a complete redesign of how product and UX teams worked together. We shipped. I left the day before launch.</p>
+        <p>Now I'm doing two things: consulting with companies who need an experienced product leader with genuine entertainment industry expertise, and building products of my own — tools designed specifically for the workflows I know best.</p>
+        <p>I'm also a LUMA-certified facilitator and active product coach. If your team needs to learn how to run discovery, test hypotheses, or build a design thinking practice that actually sticks — that's work I love doing.</p>
+        <a href="#schedule" class="btn btn-sage" style="margin-top: 0.5rem; display: inline-block;">Let's Talk</a>
+      </div>
+      <div class="about-sidebar fade-up">
+        <div class="sidebar-block">
+          <div class="sidebar-label">Domain</div>
+          <div class="sidebar-val">Entertainment industry SaaS — production payroll, onboarding, timekeeping, and accounting for major studios, TV networks, streaming platforms, and live events</div>
+        </div>
+        <div class="sidebar-block">
+          <div class="sidebar-label">Expertise</div>
+          <div class="sidebar-val">Product strategy, UX leadership, design thinking facilitation, legacy platform consolidation, team transformation, 0-to-1 product development</div>
+        </div>
+        <div class="sidebar-block">
+          <div class="sidebar-label">Credentials</div>
+          <div class="sidebar-val">LUMA Certified Facilitator · Certified Scrum Product Owner · Certificate in Design Thinking & Innovation, UVA Darden · BA Journalism, Penn State</div>
+        </div>
+        <div class="sidebar-block">
+          <div class="sidebar-label">Available For</div>
+          <div class="sidebar-val">Consulting engagements · Product coaching &amp; workshops · Advisory roles · Speaking</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="section" id="work">
+  <div class="section-inner">
+    <div class="section-label">Selected Work</div>
+    <h2 class="section-title">Problems worth solving.</h2>
+    <p class="section-intro">A look at the work that shaped how I think — from platform transformations to team builds to the unglamorous, consequential work of getting cross-functional teams aligned.</p>
+    <div class="work-grid">
+
+      <div class="case-card fade-up">
+        <div class="card-top ct-navy"></div>
+        <div class="card-body">
+          <div class="card-type">Platform Consolidation · Cast &amp; Crew</div>
+          <div class="card-title">From Five Products to One Experience</div>
+          <div class="card-desc">Led the multi-year initiative to consolidate Cast &amp; Crew's fragmented suite — MyC&amp;C, Studio+, Start+, Hours+, and Reporting+ — into a unified platform with shared SSO, global navigation, and a new design system built from scratch. Scope spanned Feature Film, TV, Streaming, Commercial, and Live Entertainment.</div>
+          <div class="card-metric"><strong>5×</strong> faster front-end development after design system launch</div>
+          <div class="card-tags">
+            <span class="tag">UX Strategy</span>
+            <span class="tag">Platform Design</span>
+            <span class="tag">Design System</span>
+            <span class="tag">Enterprise</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card fade-up">
+        <div class="card-top ct-sage"></div>
+        <div class="card-body">
+          <div class="card-type">Self-Service Product · Cast &amp; Crew</div>
+          <div class="card-title">The Crew Member Portal</div>
+          <div class="card-desc">Built a self-service dashboard for Cast &amp; Crew's 300,000+ crew members — the largest but least-served user group. The existing portal buried the things crew members needed most: paystubs, deal memos, timecards, and payment history were all there, but hard to find — leading to unnecessary support calls and frustration. We redesigned around how crew actually used the product, surfacing everything in one place. Notably, these users have no purchasing power but represent the majority of daily interactions with the platform.</div>
+          <div class="card-metric"><strong>300K+</strong> crew members with direct access to their own data</div>
+          <div class="card-tags">
+            <span class="tag">0-to-1</span>
+            <span class="tag">User Research</span>
+            <span class="tag">Self-Service</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card fade-up">
+        <div class="card-top ct-slate"></div>
+        <div class="card-body">
+          <div class="card-type">Team Transformation · Cast &amp; Crew</div>
+          <div class="card-title">Building a Research-Driven Product Culture</div>
+          <div class="card-desc">Inherited a delivery-focused team where most PMs had never worked alongside a UX designer. Built the practice from the ground up — leveling frameworks, discovery rituals, and a UX org that grew from 2 to 11. The real shift was cultural: teams learned to validate workflows with real users before requirements were ever written, with Product and UX working together through generative and evaluative research to understand the problem before defining the solution. By the time I left, discovery wasn't a step in the process — it was how the team thought.</div>
+          <div class="card-metric">NPS improved from <strong>-25 to +20</strong> on core payroll product within 12 months</div>
+          <div class="card-tags">
+            <span class="tag">Org Design</span>
+            <span class="tag">Coaching</span>
+            <span class="tag">Discovery</span>
+            <span class="tag">Leadership</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p class="work-note">Full case study details available upon request — reach out below or book time directly.</p>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="section-inner">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title">Where I've been.</h2>
+    <div class="timeline">
+
+      <div class="timeline-item fade-up">
+        <div class="timeline-left">
+          <div class="timeline-date">2026 – Present</div>
+          <div class="timeline-company">Independent</div>
+        </div>
+        <div>
+          <div class="timeline-role">Product Consultant &amp; Founder</div>
+          <div class="timeline-desc">Consulting with entertainment industry companies on product strategy, UX, and team transformation. Simultaneously building a product of my own — tools designed for the entertainment production workflows I know from the inside.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-up">
+        <div class="timeline-left">
+          <div class="timeline-date">2022 – Present</div>
+          <div class="timeline-company">Product Rebels</div>
+        </div>
+        <div>
+          <div class="timeline-role">Product Coach</div>
+          <div class="timeline-desc">One of ten coaches in a curriculum focused on establishing world-class product management practices. Leads hands-on workshops and consulting engagements helping teams move from delivery-focused to discovery-led.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-up">
+        <div class="timeline-left">
+          <div class="timeline-date">2023 – 2026</div>
+          <div class="timeline-company">Cast &amp; Crew</div>
+        </div>
+        <div>
+          <div class="timeline-role">VP, UX &amp; Accounting Product Management</div>
+          <div class="timeline-desc">Hired to establish product management and research best practices across a delivery-focused organization. Scope expanded to include Commercial and Live Entertainment verticals, and ultimately UX leadership across all business units. Left after delivering a major unified platform experience.</div>
+          <ul class="timeline-bullets">
+            <li>Consolidated five separate products into a unified experience with shared SSO, design system, and global navigation</li>
+            <li>Built UX organization from 2 to 11, including AI-enabled design system team and UX research practice</li>
+            <li>Launched self-service crew portal serving 300K+ users, reducing employee help desk load</li>
+            <li>Improved core product NPS by 45 points within 12 months</li>
+            <li>Achieved Customer Effort Score of 5.5/7 for new Commercial Onboarding solution</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-up">
+        <div class="timeline-left">
+          <div class="timeline-date">2019 – 2023</div>
+          <div class="timeline-company">BlackLine</div>
+        </div>
+        <div>
+          <div class="timeline-role">Sr. Director, Product</div>
+          <div class="timeline-desc">Responsible for UI Platform, Mobile, Globalization, Reporting &amp; Analytics. Co-led transformation from a delivery-focused team to a strategic product organization with 4-quarter roadmap planning.</div>
+          <ul class="timeline-bullets">
+            <li>Led go-to-market for company's first native mobile app (iOS and Android)</li>
+            <li>Established BlackLine's first Product North Star metrics and OKR framework</li>
+            <li>Identified and secured funding for first product usage analytics strategy</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-up">
+        <div class="timeline-left">
+          <div class="timeline-date">2018 – 2019</div>
+          <div class="timeline-company">TrueCar</div>
+        </div>
+        <div>
+          <div class="timeline-role">Sr. Director, Product</div>
+          <div class="timeline-desc">Hired to define best practices, drive innovation, and develop the Product Ownership team. Led the company's first design thinking initiative.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-up">
+        <div class="timeline-left">
+          <div class="timeline-date">2012 – 2018</div>
+          <div class="timeline-company">Entertainment Partners</div>
+        </div>
+        <div>
+          <div class="timeline-role">Director, UX &amp; Product Management</div>
+          <div class="timeline-desc">Promoted twice — first to drive digital transformation of enterprise payroll solutions, then to establish the company's internal UX organization as a Center of Excellence.</div>
+          <ul class="timeline-bullets">
+            <li>Three-time WOW Award recipient for excellence in client experience</li>
+            <li>Secured company onboarding initiative as #2 roadmap priority for 2018</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-up">
+        <div class="timeline-left">
+          <div class="timeline-date">2005 – 2012</div>
+          <div class="timeline-company">Final Draft</div>
+        </div>
+        <div>
+          <div class="timeline-role">Sr. Product Manager</div>
+          <div class="timeline-desc">Led the company's flagship screenwriting software — the industry standard used by most television and film writers. Delivered the XML file format that became the industry standard and established partnerships with Pixar and other leading studios.</div>
+          <ul class="timeline-bullets">
+            <li>Increased overall revenue by 23% in year one via mobile innovation</li>
+            <li>Delivered first open-source XML format now used across the industry</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-up">
+        <div class="timeline-left">
+          <div class="timeline-date">1998 – 2005</div>
+          <div class="timeline-company">Early Career</div>
+        </div>
+        <div>
+          <div class="timeline-role">Product &amp; Client Leadership</div>
+          <div class="timeline-desc">Early roles in entertainment technology at Studio Systems and Creative Planet — among the first companies to bring entertainment industry research and production tools to the web. Details available upon request.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonials">
+  <div class="section-inner">
+    <div class="section-label">What People Say</div>
+    <h2 class="section-title">In their words.</h2>
+    <div class="testimonial-grid">
+
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-text">
+          Kirsten helped me build my product management and leadership skills brick by brick, emphasizing strong leadership, deeply understanding customer feedback, and meeting people where they are for better outcomes. One of the most valuable areas she helped me develop was navigating difficult conversations — she taught me how to approach these moments with clarity, confidence, and empathy. Her balance of empathy and directness makes you feel supported, challenged, and most importantly: capable.
+        </div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">AV</div>
+          <div>
+            <div class="testimonial-name">Alexis Voltaire</div>
+            <div class="testimonial-title">Associate Product Manager · Cast &amp; Crew</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-text">
+          Kirsten is a rare leader who excels across both Product and UX. She brings clear product vision, strong user-centered thinking, and the ability to translate strategy into practical, high-impact outcomes. She creates an environment where teams feel safe to speak openly, align quickly, and execute with confidence. She leads with candor and integrity, earning trust across design, product, and engineering. Kirsten consistently elevates both the people around her and the work itself.
+        </div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SW</div>
+          <div>
+            <div class="testimonial-name">Samuel Weirich</div>
+            <div class="testimonial-title">Design Leader · Enterprise UX &amp; Product Strategy</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="section" id="schedule">
+  <div class="section-inner">
+    <div class="section-label">Let's Connect</div>
+    <h2 class="section-title">Book time with me.</h2>
+    <p class="section-intro">Whether you're exploring a consulting engagement, looking for a product coach, or want to talk through what you're building — I keep time open each week for good conversations.</p>
+    <div class="schedule-layout">
+      <div class="schedule-info">
+        <div class="schedule-types">
+          <div class="schedule-type">
+            <div class="schedule-dot"></div>
+            <div>
+              <div class="schedule-type-name">Consulting Inquiry</div>
+              <div class="schedule-type-desc">Explore working together on product strategy, UX, or team transformation</div>
+            </div>
+          </div>
+          <div class="schedule-type">
+            <div class="schedule-dot"></div>
+            <div>
+              <div class="schedule-type-name">Product Coaching</div>
+              <div class="schedule-type-desc">Workshop facilitation, discovery practice, or 1:1 team coaching</div>
+            </div>
+          </div>
+          <div class="schedule-type">
+            <div class="schedule-dot"></div>
+            <div>
+              <div class="schedule-type-name">Advisory Conversation</div>
+              <div class="schedule-type-desc">Industry perspective, career advice, or a second opinion on a hard problem</div>
+            </div>
+          </div>
+          <div class="schedule-type">
+            <div class="schedule-dot"></div>
+            <div>
+              <div class="schedule-type-name">Speaking &amp; Workshops</div>
+              <div class="schedule-type-desc">Design thinking, product discovery, and leadership for conferences and teams</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="calendly-wrapper">
+        <!-- Calendly inline widget begin -->
+        <div class="calendly-inline-widget" data-url="https://calendly.com/klt-kirstenthayer/30min?hide_event_type_details=1&background_color=fafaf8&text_color=1c2333&primary_color=1a2e4a" style="min-width:320px;height:700px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <!-- Calendly inline widget end -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-inner">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Say hello.</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>Have a specific project in mind, or just want to introduce yourself? Fill out the form or reach out directly — I respond to every note.</p>
+        <div class="contact-links">
+          <a href="mailto:KLT@kirstenthayer.com" class="contact-link">
+            <div class="contact-link-icon">✉</div>
+            KLT@kirstenthayer.com
+          </a>
+          <a href="https://www.linkedin.com/in/kirstenvenselthayer/" target="_blank" class="contact-link">
+            <div class="contact-link-icon">in</div>
+            linkedin.com/in/kirstenvenselthayer
+          </a>
+          <a href="#schedule" class="contact-link">
+            <div class="contact-link-icon">📅</div>
+            Book a 30-minute call
+          </a>
+        </div>
+      </div>
+      <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="subject">Reason for Reaching Out</label>
+          <select id="subject" name="subject">
+            <option value="">Select one...</option>
+            <option value="consulting">Consulting Engagement</option>
+            <option value="coaching">Product Coaching or Workshop</option>
+            <option value="advisory">Advisory or Speaking</option>
+            <option value="general">General Hello</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell me a bit about what you have in mind..." required></textarea>
+        </div>
+        <div class="form-status" id="formStatus"></div>
+        <button type="submit" class="btn btn-primary" style="align-self: flex-start; cursor: pointer;">Send Message</button>
+        <p style="font-size: 0.78rem; color: var(--light-muted); margin-top: 0.25rem;">
+          To activate this form, connect it to <a href="https://formspree.io" target="_blank" style="color: var(--sage);">Formspree</a> (free tier) — instructions in the code.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Kirsten Thayer &nbsp;·&nbsp; Product Leadership &amp; Consulting &nbsp;·&nbsp; <a href="mailto:KLT@kirstenthayer.com">KLT@kirstenthayer.com</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/kirstenvenselthayer/" target="_blank">LinkedIn</a></p>
+</footer>
+
+<script>
+  /* ── Active nav highlight ── */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.style.color = '');
+        const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        if (active) active.style.color = 'var(--navy)';
+      }
+    });
+  }, { threshold: 0.35 });
+  sections.forEach(s => observer.observe(s));
+
+  /* ── Fade-up on scroll ── */
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const fadeObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.08 });
+  fadeEls.forEach(el => fadeObs.observe(el));
+
+  /* ── Contact form ── */
+  /* To activate:
+     1. Sign up at https://formspree.io (free — 50 submissions/month)
+     2. Create a form, copy your endpoint (e.g. https://formspree.io/f/xyzabcde)
+     3. Replace FORMSPREE_ENDPOINT below with your actual URL
+  */
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    const btn = form.querySelector('button[type="submit"]');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    status.style.display = 'none';
+
+    if (FORMSPREE_ENDPOINT.includes('YOUR_FORM_ID')) {
+      setTimeout(() => {
+        status.className = 'form-status success';
+        status.textContent = 'Demo mode — connect Formspree to receive real messages.';
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+        form.reset();
+      }, 800);
+      return;
+    }
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        status.className = 'form-status success';
+        status.textContent = "Thanks — I'll be in touch soon.";
+        form.reset();
+      } else {
+        throw new Error();
+      }
+    } catch {
+      status.className = 'form-status error';
+      status.textContent = 'Something went wrong. Please email me directly.';
+    }
+    btn.textContent = 'Send Message';
+    btn.disabled = false;
+  }
+</script>
+</body>
+</html>
