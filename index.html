@@ -157,51 +157,30 @@
   /* Hero visual */
   .hero-visual { position: relative; display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-end; }
 
-  /* Headshot */
-  .hero-headshot {
-    width: 160px;
-    height: 160px;
+  /* Headshot inside card */
+  .hero-card-headshot {
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     overflow: hidden;
-    background: linear-gradient(160deg, #2a3f5a, #3d6b4a);
-    position: relative;
+    border: 2px solid rgba(255,255,255,0.2);
+    margin: 0 auto 1.5rem auto;
     flex-shrink: 0;
-    align-self: flex-end;
-    border: 3px solid rgba(255,255,255,0.15);
-    box-shadow: 0 8px 30px rgba(26,46,74,0.18);
   }
-  .hero-headshot img {
+  .hero-card-headshot img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center top;
     display: block;
   }
-  .hero-headshot-placeholder {
-    text-align: center;
-    color: rgba(255,255,255,0.5);
-    font-size: 0.875rem;
-    font-weight: 400;
-    padding: 1rem;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
-  .hero-headshot-placeholder span {
-    display: block;
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
 
   .hero-card {
     width: 100%;
-    max-width: 360px;
+    max-width: 420px;
     background: linear-gradient(150deg, var(--navy) 0%, #1e3a5f 60%, #253f63 100%);
     border-radius: 6px;
-    padding: 2rem;
+    padding: 2.25rem;
     position: relative;
     overflow: hidden;
   }
@@ -782,10 +761,10 @@
     </div>
   </div>
   <div class="hero-visual">
-    <div class="hero-headshot">
-      <img src="headshot.jpg" alt="Kirsten Thayer — Product Leader & Consultant">
-    </div>
     <div class="hero-card">
+      <div class="hero-card-headshot">
+        <img src="headshot.jpg" alt="Kirsten Thayer — Product Leader & Consultant">
+      </div>
       <div class="hero-card-label">At a Glance</div>
       <div class="hero-stats">
         <div>
