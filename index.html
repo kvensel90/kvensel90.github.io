@@ -14,15 +14,15 @@
     --navy: #1a2e4a;
     --navy-mid: #243a5e;
     --navy-light: #2d4a73;
-    --sage: #4a7c59;
-    --sage-light: #6b9b7a;
+    --sage: #3d6b4a;
+    --sage-light: #4a7c59;
     --sage-pale: #e8f0ea;
     --sage-faint: #f2f6f3;
     --warm-white: #fafaf8;
     --cream: #f5f3ef;
     --ink: #1c2333;
-    --muted: #5a6478;
-    --light-muted: #8a94a6;
+    --muted: #445060;
+    --light-muted: #5a6478;
     --border: rgba(26,46,74,0.1);
     --border-mid: rgba(26,46,74,0.18);
     --font-display: 'Cormorant Garamond', Georgia, serif;
@@ -61,9 +61,9 @@
   .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
   .nav-links a {
     text-decoration: none;
-    font-size: 0.82rem;
+    font-size: 0.875rem;
     font-weight: 500;
-    letter-spacing: 0.09em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     color: var(--muted);
     transition: color 0.2s;
@@ -89,9 +89,9 @@
     gap: 5rem;
   }
   .hero-eyebrow {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     font-weight: 500;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--sage);
     margin-bottom: 1.75rem;
@@ -124,7 +124,7 @@
     color: var(--muted);
     max-width: 500px;
     margin-bottom: 2.75rem;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.85;
   }
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
@@ -134,14 +134,18 @@
     padding: 0.9rem 2.1rem;
     border-radius: 2px;
     font-family: var(--font-body);
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     font-weight: 500;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
     border: none;
     transition: all 0.22s;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   .btn-primary { background: var(--navy); color: white; }
   .btn-primary:hover { background: var(--navy-mid); }
@@ -151,11 +155,53 @@
   .btn-sage:hover { background: var(--sage-light); }
 
   /* Hero visual */
-  .hero-visual { position: relative; }
+  .hero-visual { position: relative; display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-end; }
+
+  /* Headshot */
+  .hero-headshot {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: linear-gradient(160deg, #2a3f5a, #3d6b4a);
+    position: relative;
+    flex-shrink: 0;
+    align-self: flex-end;
+    border: 3px solid rgba(255,255,255,0.15);
+    box-shadow: 0 8px 30px rgba(26,46,74,0.18);
+  }
+  .hero-headshot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .hero-headshot-placeholder {
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.875rem;
+    font-weight: 400;
+    padding: 1rem;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .hero-headshot-placeholder span {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
   .hero-card {
+    width: 100%;
+    max-width: 360px;
     background: linear-gradient(150deg, var(--navy) 0%, #1e3a5f 60%, #253f63 100%);
     border-radius: 6px;
-    padding: 3rem;
+    padding: 2rem;
     position: relative;
     overflow: hidden;
   }
@@ -178,49 +224,52 @@
     pointer-events: none;
   }
   .hero-card-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.14em;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(184,210,190,0.7);
-    margin-bottom: 2rem;
+    color: rgba(184,210,190,0.85);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
   }
   .hero-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.75rem;
-    margin-bottom: 2.5rem;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
   }
   .hero-stat-num {
     font-family: var(--font-display);
-    font-size: 2.6rem;
+    font-size: 2.2rem;
     color: white;
     font-weight: 500;
     line-height: 1;
     margin-bottom: 0.3rem;
   }
   .hero-stat-label {
-    font-size: 0.72rem;
-    color: rgba(255,255,255,0.45);
-    letter-spacing: 0.06em;
-    line-height: 1.4;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.75);
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+    font-weight: 400;
   }
   .hero-card-divider {
     height: 1px;
-    background: rgba(255,255,255,0.12);
-    margin-bottom: 2rem;
+    background: rgba(255,255,255,0.15);
+    margin-bottom: 1.5rem;
   }
   .hero-card-quote {
     font-family: var(--font-display);
     font-style: italic;
     font-size: 1.05rem;
-    color: rgba(255,255,255,0.75);
+    color: rgba(255,255,255,0.85);
     line-height: 1.6;
     margin-bottom: 0.75rem;
   }
   .hero-card-attr {
-    font-size: 0.72rem;
-    color: rgba(184,210,190,0.6);
-    letter-spacing: 0.06em;
+    font-size: 0.8rem;
+    color: rgba(184,210,190,0.9);
+    letter-spacing: 0.04em;
+    font-weight: 400;
   }
 
   /* ── SECTION WRAPPER ── */
@@ -231,9 +280,9 @@
     padding: 0 4rem;
   }
   .section-label {
-    font-size: 0.72rem;
+    font-size: 0.875rem;
     font-weight: 500;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--sage);
     margin-bottom: 1rem;
@@ -261,7 +310,7 @@
     font-size: 1.05rem;
     color: var(--muted);
     max-width: 600px;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.9;
   }
 
@@ -276,7 +325,7 @@
   }
   .about-text p {
     color: var(--muted);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.9;
     margin-bottom: 1.6rem;
     font-size: 1.05rem;
@@ -293,15 +342,15 @@
   }
   .sidebar-block:last-child { border-bottom: 1px solid var(--border-mid); }
   .sidebar-label {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--sage);
     margin-bottom: 0.6rem;
   }
   .sidebar-val {
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     color: var(--ink);
     font-weight: 400;
     line-height: 1.65;
@@ -326,17 +375,15 @@
     transform: translateY(-5px);
     box-shadow: 0 20px 50px rgba(26,46,74,0.1);
   }
-  .card-top {
-    height: 5px;
-  }
+  .card-top { height: 5px; }
   .ct-navy { background: var(--navy); }
   .ct-sage { background: var(--sage); }
   .ct-slate { background: #4a5568; }
   .card-body { padding: 2rem; }
   .card-type {
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--sage);
     margin-bottom: 0.75rem;
@@ -351,9 +398,9 @@
     letter-spacing: -0.01em;
   }
   .card-desc {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--muted);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.8;
     margin-bottom: 1.5rem;
   }
@@ -363,7 +410,7 @@
     padding: 0.85rem 1rem;
     border-radius: 0 2px 2px 0;
     margin-bottom: 1.25rem;
-    font-size: 0.88rem;
+    font-size: 0.95rem;
     color: var(--ink);
     font-weight: 400;
   }
@@ -374,18 +421,18 @@
   .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .tag {
     display: inline-block;
-    padding: 0.22rem 0.65rem;
+    padding: 0.3rem 0.75rem;
     background: var(--sage-faint);
     color: var(--sage);
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     border-radius: 2px;
   }
   .work-note {
     margin-top: 2.5rem;
-    font-size: 0.88rem;
+    font-size: 0.95rem;
     color: var(--light-muted);
     font-style: italic;
   }
@@ -404,14 +451,14 @@
   .timeline-item:last-child { border-bottom: 1px solid var(--border); }
   .timeline-left {}
   .timeline-date {
-    font-size: 0.8rem;
-    color: var(--light-muted);
+    font-size: 0.875rem;
+    color: var(--muted);
     font-weight: 400;
     margin-bottom: 0.4rem;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.02em;
   }
   .timeline-company {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -427,9 +474,9 @@
     letter-spacing: -0.01em;
   }
   .timeline-desc {
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     color: var(--muted);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.85;
     margin-bottom: 0.85rem;
   }
@@ -735,6 +782,9 @@
     </div>
   </div>
   <div class="hero-visual">
+    <div class="hero-headshot">
+      <img src="headshot.jpg" alt="Kirsten Thayer — Product Leader & Consultant">
+    </div>
     <div class="hero-card">
       <div class="hero-card-label">At a Glance</div>
       <div class="hero-stats">
