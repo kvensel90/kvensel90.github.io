@@ -52,8 +52,8 @@
   }
   .nav-logo {
     font-family: var(--font-display);
-    font-size: 1.3rem;
-    font-weight: 500;
+    font-size: 1.5rem;
+    font-weight: 600;
     color: var(--navy);
     text-decoration: none;
     letter-spacing: 0.02em;
@@ -159,8 +159,8 @@
 
   /* Headshot inside card */
   .hero-card-headshot {
-    width: 110px;
-    height: 110px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     overflow: hidden;
     border: 2px solid rgba(255,255,255,0.2);
@@ -168,11 +168,13 @@
     flex-shrink: 0;
   }
   .hero-card-headshot img {
-    width: 100%;
-    height: 100%;
+    width: 120%;
+    height: 120%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center 8%;
     display: block;
+    margin-left: -10%;
+    margin-top: -5%;
   }
 
   .hero-card {
@@ -192,6 +194,7 @@
     border-radius: 50%;
     background: rgba(74,124,89,0.15);
     pointer-events: none;
+    z-index: 0;
   }
   .hero-card::after {
     content: '';
@@ -201,6 +204,16 @@
     border-radius: 50%;
     background: rgba(255,255,255,0.04);
     pointer-events: none;
+    z-index: 0;
+  }
+  .hero-card-headshot,
+  .hero-card-label,
+  .hero-stats,
+  .hero-card-divider,
+  .hero-card-quote,
+  .hero-card-attr {
+    position: relative;
+    z-index: 1;
   }
   .hero-card-label {
     font-size: 0.75rem;
@@ -723,8 +736,25 @@
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 3rem; }
+
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 7rem 1.5rem 3rem;
+      gap: 2.5rem;
+    }
+    .hero-visual {
+      align-items: center;
+      width: 100%;
+    }
+    .hero-card {
+      max-width: 100%;
+      width: 100%;
+    }
+    .hero h1 { font-size: clamp(2.4rem, 8vw, 3.5rem); }
+
     .section-inner { padding: 0 1.5rem; }
+    .section { padding: 4rem 0; }
+
     .about-grid { grid-template-columns: 1fr; gap: 3rem; }
     .work-grid { grid-template-columns: 1fr; }
     .testimonial-grid { grid-template-columns: 1fr; }
@@ -732,6 +762,39 @@
     .schedule-layout { grid-template-columns: 1fr; gap: 3rem; }
     .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
     .form-row { grid-template-columns: 1fr; }
+
+    .schedule-type-name { font-size: 0.95rem; }
+    .schedule-type-desc {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      font-weight: 400;
+    }
+
+    .timeline-date { font-size: 0.875rem; }
+    .timeline-company { font-size: 0.875rem; }
+
+    .hero-stats { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .hero-stat-num { font-size: 1.8rem; }
+
+    .contact-info p { font-weight: 400; }
+
+    footer {
+      font-size: 0.875rem;
+      font-weight: 400;
+      padding: 2rem 1.5rem;
+      line-height: 1.8;
+    }
+
+    .btn { min-height: 48px; padding: 0.9rem 1.75rem; }
+
+    .calendly-inline-widget { min-width: 100% !important; }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 2.2rem; }
+    .hero-stat-num { font-size: 1.6rem; }
+    .section-title { font-size: 2rem; }
+    .hero-stats { gap: 0.75rem; }
   }
 </style>
 </head>
@@ -1187,9 +1250,6 @@
         </div>
         <div class="form-status" id="formStatus"></div>
         <button type="submit" class="btn btn-primary" style="align-self: flex-start; cursor: pointer;">Send Message</button>
-        <p style="font-size: 0.78rem; color: var(--light-muted); margin-top: 0.25rem;">
-          To activate this form, connect it to <a href="https://formspree.io" target="_blank" style="color: var(--sage);">Formspree</a> (free tier) — instructions in the code.
-        </p>
       </form>
     </div>
   </div>
@@ -1230,7 +1290,7 @@
      2. Create a form, copy your endpoint (e.g. https://formspree.io/f/xyzabcde)
      3. Replace FORMSPREE_ENDPOINT below with your actual URL
   */
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mreroobv';
 
   async function handleSubmit(e) {
     e.preventDefault();
