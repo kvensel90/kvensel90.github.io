@@ -348,6 +348,48 @@
     line-height: 1.65;
   }
 
+  /* ── APPROACH ── */
+  #approach { background: var(--warm-white); }
+  .approach-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 6rem;
+    align-items: start;
+    margin-top: 4rem;
+  }
+  .approach-text p {
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.9;
+    margin-bottom: 1.6rem;
+    font-size: 1.05rem;
+  }
+  .approach-text p:first-child {
+    font-size: 1.15rem;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .approach-sidebar { display: flex; flex-direction: column; gap: 0; }
+  .approach-block {
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border-mid);
+  }
+  .approach-block:last-child { border-bottom: 1px solid var(--border-mid); }
+  .approach-block-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.6rem;
+  }
+  .approach-block-text {
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-weight: 400;
+    line-height: 1.65;
+  }
+
   /* ── WORK ── */
   #work { background: var(--warm-white); }
   .work-grid {
@@ -695,17 +737,42 @@
     font-size: 0.9rem;
     display: none;
   }
-  .form-status.success {
-    display: block;
-    background: var(--sage-faint);
-    color: var(--sage);
-    border: 1px solid rgba(107,155,122,0.3);
-  }
   .form-status.error {
     display: block;
     background: #fef2f2;
     color: #991b1b;
     border: 1px solid #fecaca;
+  }
+  .form-success {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 2.5rem;
+    background: white;
+    border: 1px solid rgba(107,155,122,0.3);
+    border-radius: 4px;
+    border-left: 4px solid var(--sage);
+  }
+  .form-success.visible { display: flex; }
+  .form-success-icon {
+    width: 48px; height: 48px;
+    background: var(--sage-faint);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+  }
+  .form-success-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--navy);
+    font-weight: 500;
+  }
+  .form-success-msg {
+    font-size: 1rem;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.7;
   }
 
   /* ── FOOTER ── */
@@ -756,6 +823,7 @@
     .section { padding: 4rem 0; }
 
     .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .approach-grid { grid-template-columns: 1fr; gap: 3rem; }
     .work-grid { grid-template-columns: 1fr; }
     .testimonial-grid { grid-template-columns: 1fr; }
     .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
@@ -805,6 +873,7 @@
   <a href="#" class="nav-logo">Kirsten Thayer</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#approach">Approach</a></li>
     <li><a href="#work">Work</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#testimonials">Testimonials</a></li>
@@ -888,6 +957,40 @@
         <div class="sidebar-block">
           <div class="sidebar-label">Available For</div>
           <div class="sidebar-val">Consulting engagements · Product coaching &amp; workshops · Advisory roles · Speaking</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW I WORK -->
+<section class="section" id="approach">
+  <div class="section-inner">
+    <div class="section-label">My Approach</div>
+    <h2 class="section-title">How I work.</h2>
+    <div class="approach-grid">
+      <div class="approach-text fade-up">
+        <p>I'm brought in when something isn't working — a fragmented product, a team that's never shipped together, a platform that's outgrown itself. I don't need a clean brief to get started. I need a real problem.</p>
+        <p>My instinct is to find the solution inside the problem rather than around it. That means I move quickly into diagnosis — talking to the people closest to the work, mapping what's actually happening versus what the org chart says should be happening, and identifying where the real leverage is. I'm direct about what I find, and I communicate in outcomes rather than abstractions.</p>
+        <p>I work best when I can influence how a team thinks, not just what they deliver. That means challenging assumptions early, running discovery that actually changes what gets built, and creating the conditions for Product and UX to work as one discipline rather than two departments. I'm energized by momentum and closure — I start things and I finish them, which means I'm not the right fit for engagements that reward endless process over actual progress.</p>
+        <p>What I ask of the people I work with: tell me what you actually need, not what you think I want to hear. I'm a direct communicator and I work best with people who are too.</p>
+      </div>
+      <div class="approach-sidebar fade-up">
+        <div class="approach-block">
+          <div class="approach-block-label">I thrive when</div>
+          <div class="approach-block-text">There's a real problem to solve, a team willing to challenge its assumptions, and room to influence how the work gets done — not just what gets delivered.</div>
+        </div>
+        <div class="approach-block">
+          <div class="approach-block-label">I communicate</div>
+          <div class="approach-block-text">Directly, in outcomes. I focus on what needs to happen and why — not on managing impressions or softening findings that need to be heard.</div>
+        </div>
+        <div class="approach-block">
+          <div class="approach-block-label">I move at</div>
+          <div class="approach-block-text">Speed with quality. I'm not interested in moving fast at the expense of getting it right — but I'm equally uninterested in process that substitutes for progress.</div>
+        </div>
+        <div class="approach-block">
+          <div class="approach-block-label">I'm energized by</div>
+          <div class="approach-block-text">Momentum, closure, and seeing teams grow into something they couldn't do before I arrived.</div>
         </div>
       </div>
     </div>
@@ -1251,6 +1354,11 @@
         <div class="form-status" id="formStatus"></div>
         <button type="submit" class="btn btn-primary" style="align-self: flex-start; cursor: pointer;">Send Message</button>
       </form>
+      <div class="form-success" id="formSuccess">
+        <div class="form-success-icon">✓</div>
+        <div class="form-success-title">Message sent.</div>
+        <div class="form-success-msg">Thanks for reaching out — I read every note and will be in touch shortly. In the meantime, feel free to <a href="https://www.linkedin.com/in/kirstenvenselthayer/" target="_blank" style="color: var(--sage);">connect on LinkedIn</a> or <a href="#schedule" style="color: var(--sage);">book a call directly</a>.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1296,21 +1404,11 @@
     e.preventDefault();
     const form = document.getElementById('contactForm');
     const status = document.getElementById('formStatus');
+    const success = document.getElementById('formSuccess');
     const btn = form.querySelector('button[type="submit"]');
     btn.textContent = 'Sending...';
     btn.disabled = true;
     status.style.display = 'none';
-
-    if (FORMSPREE_ENDPOINT.includes('YOUR_FORM_ID')) {
-      setTimeout(() => {
-        status.className = 'form-status success';
-        status.textContent = 'Demo mode — connect Formspree to receive real messages.';
-        btn.textContent = 'Send Message';
-        btn.disabled = false;
-        form.reset();
-      }, 800);
-      return;
-    }
 
     try {
       const res = await fetch(FORMSPREE_ENDPOINT, {
@@ -1319,18 +1417,18 @@
         headers: { 'Accept': 'application/json' }
       });
       if (res.ok) {
-        status.className = 'form-status success';
-        status.textContent = "Thanks — I'll be in touch soon.";
-        form.reset();
+        form.style.display = 'none';
+        success.classList.add('visible');
       } else {
         throw new Error();
       }
     } catch {
       status.className = 'form-status error';
-      status.textContent = 'Something went wrong. Please email me directly.';
+      status.textContent = 'Something went wrong. Please email me directly at KLT@kirstenthayer.com.';
+      status.style.display = 'block';
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
     }
-    btn.textContent = 'Send Message';
-    btn.disabled = false;
   }
 </script>
 </body>
